@@ -30,6 +30,7 @@ export type QueryType<T extends SchemaType> = Partial<{
 export class Query<T extends SchemaType> {
     readonly query: QueryType<T>
 }
+//test
 "#;
 
 #[derive(Debug, Clone)]
