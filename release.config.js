@@ -8,19 +8,24 @@ module.exports = {
     plugins: [
         '@semantic-release/commit-analyzer',
         '@semantic-release/release-notes-generator',
-        '@semantic-release/npm',
+        [
+            '@semantic-release/npm',
+            {
+                "pkgRoot": "./pkg"
+            }
+        ],
         '@semantic-release/github',
         '@semantic-release/changelog',
         [
             '@semantic-release/exec',
             {
-                prepareCmd: 'node ../scripts/update-cargo-version.js ${nextRelease.version}'
+                prepareCmd: 'node scripts/update-cargo-version.js ${nextRelease.version}'
             }
         ],
         [
             '@semantic-release/git',
             {
-                assets: ['../Cargo.toml', '../Cargo.lock','Cargo.toml', 'Cargo.lock', 'package.json', 'package-lock.json'],
+                assets: ['Cargo.toml', 'Cargo.lock', 'CHANGELOG.md'],
                 message:
                     'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
             },
