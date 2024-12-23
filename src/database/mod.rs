@@ -289,7 +289,7 @@ impl Database {
         Ok(Database { storage, started: false })
     }
 }
-/*
+
 #[cfg(test)]
 mod tests {
     use crate::storage::{indexdb::IndexDB, inmemory::InMemory};
@@ -356,12 +356,14 @@ mod tests {
         ).unwrap();
 
         // Create the database
-        let db = Database::create(
+        let mut db = Database::create(
+            "test-db",
             schemas.clone().unchecked_into(),
             migrations,
             plugins,
             module.unchecked_into(),
-            None
+            None,
+            None,
         ).await.unwrap();
 
         // Test that we can get collections
@@ -430,11 +432,13 @@ mod tests {
         ).unwrap();
 
         // Create the database
-        let db = Database::create(
+        let mut db = Database::create(
+            "test-db",
             schemas.clone().unchecked_into(),
             migrations,
             plugins,
             module.unchecked_into(),
+            None,
             None
         ).await.unwrap();
 
@@ -448,4 +452,4 @@ mod tests {
         // Clean up
         db.close().await.unwrap();
     }
-} */
+}

@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
 set -e  # Exit on any error
+
+# Function to test node environment
+test_node() {
+    wasm-pack --log-level error test --node -- --features node || { echo "wasm-pack test for node failed"; exit 1; }
+}
+
+# Function to test browser environment
+test_browser() {
+    # Check if chromedriver is installed
+    if ! which chromedriver > /dev/null; then
+        echo "Error: chromedriver is not installed. Please install chromedriver to continue."
+        exit 1
+    fi
+    wasm-pack --log-level error test --headless --chrome -- --features browser || { echo "wasm-pack test for browser failed"; exit 1; }
+}
+
 # Initialize variables
 ENVIRONMENT=""
 
@@ -13,30 +29,22 @@ done
 
 # Check required options
 if [ -z "$ENVIRONMENT" ]; then
-    echo "Usage: $0 -e [node|browser]"
-    exit 1
+    echo "No environment specified. Testing both node and browser environments."
+    test_node
+    test_browser
+    exit 0
 fi
-
-# Define test environment options
-NODE_ENV="--environment node --run"
-BROWSER_ENV="--environment jsdom --browser --browser.name=chrome --run"
-
-
-RUSTFLAGS="-Awarnings" cargo test
 
 # Check which environment to test based on the options provided
-if [ "$ENVIRONMENT" = "node" ]; then
-    # Execute wasm-pack for node, handle possible failures
-    wasm-pack --log-level error test --node -- --features node   || { echo "wasm-pack test failed"; exit 1; }
-elif [ "$ENVIRONMENT" = "browser" ]; then
-    # Check if chromedriver is installed
-    if ! which chromedriver > /dev/null; then
-        echo "Error: chromedriver is not installed. Please install chromedriver to continue."
+case "$ENVIRONMENT" in
+    node)
+        test_node
+        ;;
+    browser)
+        test_browser
+        ;;
+    *)
+        echo "Error: Unknown environment specified. Please use '-e node' or '-e browser'."
         exit 1
-    fi
-    # Execute wasm-pack for browser, handle possible failures
-    wasm-pack --log-level error test --headless --chrome -- --features browser   || { echo "wasm-pack test failed"; exit 1; }
-else
-    echo "Error: Unknown environment specified. Please use '-e node' or '-e browser'."
-    exit 1
-fi
+        ;;
+esac
