@@ -1,0 +1,57 @@
+<svg 
+    baseProfile="tiny" 
+    version="1.2"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    viewBox="0 0 200 100"
+    class="font-nunito"
+>
+    <!-- Add dark background rectangle -->
+    <rect
+        x="10"
+        y="20"
+        width="180"
+        height="75"
+        rx="15"
+        ry="15"
+        fill="#1a1a1a"
+    />
+
+    <text 
+        x="30" 
+        y="60"
+        fill="#FFFFFF" 
+        font-family="Nunito"
+        font-size="40"
+        font-weight="900" 
+        letter-spacing="1" 
+        style="font-stretch:120%;"
+    >
+        Trust
+    </text>
+    <text
+        x="130"
+        y="63"
+        fill="#FF6347"
+        font-family="Nunito"
+        font-size="40"
+        font-weight="900"
+        letter-spacing="1"
+        style="font-stretch:120%;"
+    >
+        O
+    </text>
+
+    <text
+        x="58"
+        y="85"
+        fill="#FFF"
+        font-family="Nunito"
+        font-size="25"
+        font-weight="900"
+        letter-spacing="1"
+        style="font-stretch:120%;"
+    >
+        RIDB
+    </text>
+</svg>

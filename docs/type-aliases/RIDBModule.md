@@ -1,0 +1,31 @@
+[**@trust0/ridb**](../README.md) • **Docs**
+
+***
+
+[@trust0/ridb](../README.md) / RIDBModule
+
+# Type Alias: RIDBModule
+
+> **RIDBModule**: `object`
+
+Represents a storage module with a method for creating storage.
+
+## Type declaration
+
+### apply()
+
+> **apply**: (`plugins`) => `BasePlugin`[]
+
+Plugin constructors array
+
+#### Parameters
+
+• **plugins**: *typeof* `BasePlugin`[]
+
+#### Returns
+
+`BasePlugin`[]
+
+## Defined in
+
+pkg/ridb\_rust.d.ts:635

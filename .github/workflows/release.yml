@@ -1,0 +1,75 @@
+name: Release
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GH_SECRET }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org/'
+          scope: '@trust0'  # Replace with your organization scope
+          cache: 'npm'
+          cache-dependency-path: ./ts/package-lock.json
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+      - name: Configure npm authentication
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ./.npmrc
+          echo "@trust0:registry=https://registry.npmjs.org/" >> ./.npmrc
+        env:
+          NPM_TOKEN: ${{ env.NPM_TOKEN }}
+
+      - name: Build
+        run: |
+          sh build.sh
+          sh test.sh
+
+      - name: Run semantic-release
+        working-directory: ./pkg
+        env:
+          NPM_TOKEN: ${{ env.NPM_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_SECRET }}
+        run: |
+          npm install @semantic-release/changelog@^6.0.3
+          npm install @semantic-release/commit-analyzer@^13.0.0
+          npm install @semantic-release/exec@^6.0.3
+          npm install @semantic-release/git@^10.0.1
+          npm install @semantic-release/github@^10.3.3
+          npm install @semantic-release/npm@^12.0.1
+          npm install @semantic-release/release-notes-generator@^14.0.1
+          npm install semantic-release@^24.1.1
+
+          npx semantic-release
