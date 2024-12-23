@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const version = process.argv[2];
-const cargoTomlPath = path.join(__dirname, './Cargo.toml');
+const cargoTomlPath = path.join(__dirname, '../Cargo.toml');
 
 fs.readFile(cargoTomlPath, 'utf8', (err, data) => {
     if (err) {
