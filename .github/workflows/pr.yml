@@ -32,4 +32,4 @@ jobs:
 
       - run: |
           sh ./build.sh
-          sh./test.sh
+          sh ./test.sh -e browser && sh ./test.sh -e node
