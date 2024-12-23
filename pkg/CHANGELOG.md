@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/trust0-project/ridb-wasm/compare/v1.0.0...v1.0.1) (2024-12-23)
+
+
+### Bug Fixes
+
+* minor improvement ([283f984](https://github.com/trust0-project/ridb-wasm/commit/283f984727fb027d44f2117175c4a4f8b01b6620))
+* scripts path ([0660c63](https://github.com/trust0-project/ridb-wasm/commit/0660c63311f4250c7d67f91b736828ea19abe762))
+
 # 1.0.0 (2024-12-23)
 
 
