@@ -8,7 +8,7 @@ use crate::schema::Schema;
 
 #[wasm_bindgen(typescript_custom_section)]
 const TS_APPEND_CONTENT: &'static str = r#"
-
+//fix
 export type BaseStorageOptions =  {
     [name:string]:string | boolean | number
 }
