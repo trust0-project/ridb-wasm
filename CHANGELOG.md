@@ -1,3 +1,11 @@
+## [1.0.6](https://github.com/trust0-project/ridb-wasm/compare/v1.0.5...v1.0.6) (2024-12-23)
+
+
+### Bug Fixes
+
+* remove folder [skip-ci] ([eb3165a](https://github.com/trust0-project/ridb-wasm/commit/eb3165af69cff4e2d81ff1cd8f023ff0c279e594))
+* update docs ([8ced22c](https://github.com/trust0-project/ridb-wasm/commit/8ced22cb90e34a7de4132086fdf81b825b540f5f))
+
 ## [1.0.5](https://github.com/trust0-project/ridb-wasm/compare/v1.0.4...v1.0.5) (2024-12-23)
 
 
