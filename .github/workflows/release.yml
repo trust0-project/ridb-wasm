@@ -38,11 +38,11 @@ jobs:
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
       - name: Build
+        env:
+          NPM_TOKEN: ${{ env.NPM_TOKEN }}
         run: |
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ./.npmrc
           echo "@trust0:registry=https://registry.npmjs.org/" >> ./.npmrc
-        env: |
-          NPM_TOKEN: ${{ env.NPM_TOKEN }}
           sh build.sh
           sh test.sh -e browser && sh test.sh -e node
 
