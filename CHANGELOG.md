@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/trust0-project/ridb-wasm/compare/v1.0.3...v1.0.4) (2024-12-23)
+
+
+### Bug Fixes
+
+* cargo lock ([b79c60d](https://github.com/trust0-project/ridb-wasm/commit/b79c60d3a381854d066999e31ad249e92a42740d))
+
 ## [1.0.3](https://github.com/trust0-project/ridb-wasm/compare/v1.0.2...v1.0.3) (2024-12-23)
 
 
