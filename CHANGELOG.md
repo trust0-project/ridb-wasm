@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/trust0-project/ridb-wasm/compare/v1.0.4...v1.0.5) (2024-12-23)
+
+
+### Bug Fixes
+
+* improve database tests ([d5005f8](https://github.com/trust0-project/ridb-wasm/commit/d5005f890a4ed501076eaf393bff7b5ecb2efaa5))
+
 ## [1.0.4](https://github.com/trust0-project/ridb-wasm/compare/v1.0.3...v1.0.4) (2024-12-23)
 
 
