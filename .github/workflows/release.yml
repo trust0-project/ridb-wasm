@@ -27,7 +27,6 @@ jobs:
           token: ${{ secrets.GH_SECRET }}
           fetch-depth: 0
 
-
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
@@ -45,7 +44,7 @@ jobs:
           sh test.sh -e browser && sh test.sh -e node
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ./pkg/.npmrc
           echo "@trust0:registry=https://registry.npmjs.org/" >> ./pkg/.npmrc
-          cd ts
+          cd pkg
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
