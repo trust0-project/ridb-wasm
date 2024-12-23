@@ -47,7 +47,7 @@ jobs:
       - name: Build
         run: |
           sh build.sh
-          sh test.sh
+          sh test.sh -e browser && sh test.sh -e node
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

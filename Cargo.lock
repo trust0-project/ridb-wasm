@@ -543,7 +543,7 @@ dependencies = [
 
 [[package]]
 name = "ridb-wasm"
-version = "0.0.0"
+version = "0.0.1"
 dependencies = [
  "aes-gcm",
  "argon2",
