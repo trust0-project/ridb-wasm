@@ -20,11 +20,10 @@ module.exports = {
         [
             '@semantic-release/git',
             {
-                assets: ['../Cargo.toml', '../Cargo.lock', 'package.json', 'package-lock.json'],
+                assets: ['../Cargo.toml', '../Cargo.lock','Cargo.toml', 'Cargo.lock', 'package.json', 'package-lock.json'],
                 message:
                     'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
             },
         ],
-        
     ],
 };
