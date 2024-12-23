@@ -14,7 +14,7 @@ module.exports = {
         [
             '@semantic-release/exec',
             {
-                prepareCmd: 'node ./scripts/update-cargo-version.js ${nextRelease.version}'
+                prepareCmd: 'node ../scripts/update-cargo-version.js ${nextRelease.version}'
             }
         ],
         [
