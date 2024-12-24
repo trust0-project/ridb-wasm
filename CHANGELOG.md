@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/trust0-project/ridb-wasm/compare/v1.0.8...v1.0.9) (2024-12-24)
+
+
+### Bug Fixes
+
+* set min jumps to 5000 for pbkdf2_hmac for better browser experience ([684f579](https://github.com/trust0-project/ridb-wasm/commit/684f5796fbc74d17236745dc74a9b8bdbb531611))
+
 ## [1.0.8](https://github.com/trust0-project/ridb-wasm/compare/v1.0.7...v1.0.8) (2024-12-24)
 
 
