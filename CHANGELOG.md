@@ -1,3 +1,11 @@
+## [1.0.10](https://github.com/trust0-project/ridb-wasm/compare/v1.0.9...v1.0.10) (2024-12-24)
+
+
+### Bug Fixes
+
+* make some modules public for level storage ([a4c461f](https://github.com/trust0-project/ridb-wasm/commit/a4c461fd1c0a6216964d8eff7eefec3eee398257))
+* public modules for level ([a2b587e](https://github.com/trust0-project/ridb-wasm/commit/a2b587e0d881415cf3fa07871e7213608c9d8165))
+
 ## [1.0.9](https://github.com/trust0-project/ridb-wasm/compare/v1.0.8...v1.0.9) (2024-12-24)
 
 
