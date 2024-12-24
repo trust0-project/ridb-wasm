@@ -3,6 +3,7 @@ use serde_wasm_bindgen::to_value;
 use wasm_bindgen::{JsCast, JsValue};
 use wasm_bindgen::prelude::{wasm_bindgen, Closure};
 use wasm_bindgen_futures::JsFuture;
+use crate::logger::Logger;
 use crate::query::Query;
 use crate::storage::internals::base_storage::BaseStorage;
 use crate::storage::internals::core::CoreStorage;
@@ -105,7 +106,7 @@ impl Storage for IndexDB {
                 Some(store.as_str().to_string())
             })
             .collect();
-        web_sys::console::log_1(&JsValue::from_str(&format!(
+        Logger::debug(&JsValue::from_str(&format!(
             "Available stores: {:?}, Attempting to access: {}",
             stores, store_name
         )));

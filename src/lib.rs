@@ -1,4 +1,3 @@
-
 use wasm_bindgen::JsValue;
 use wasm_bindgen::prelude::wasm_bindgen;
 mod error;
@@ -23,3 +22,59 @@ pub fn main_js() -> Result<(), JsValue> {
 #[cfg(feature = "wee_alloc")]
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
+
+#[wasm_bindgen]
+pub fn is_debug_mode() -> bool {
+    get_debug_mode()
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+fn get_debug_mode() -> bool {
+    std::env::var("DEBUG")
+        .ok()
+        .map(|debug_var| {
+            debug_var
+                .split(',')
+                .any(|s| s == "ridb" || s.starts_with("ridb:*"))
+        })
+        .unwrap_or(false)
+}
+
+#[cfg(target_arch = "wasm32")]
+fn get_debug_mode() -> bool {
+    use web_sys::window;
+    window()
+        .and_then(|win| win.local_storage().ok().flatten())
+        .and_then(|storage| storage.get_item("DEBUG").ok().flatten())
+        .map(|debug_str| {
+            debug_str
+                .split(',')
+                .any(|s| s == "ridb" || s.starts_with("ridb:*"))
+        })
+        .unwrap_or(false)
+}
+
+
+
+mod logger {
+    use wasm_bindgen::prelude::*;
+    use web_sys::console;
+
+    pub struct Logger;
+
+    impl Logger {
+        pub fn log(message: &JsValue) {
+            Logger::log_1(message);
+        }
+
+        pub fn debug(message: &JsValue) {
+            if crate::is_debug_mode() {
+                Logger::log_1(message);
+            }
+        }
+
+        fn log_1(message: &JsValue) {
+            console::log_1(&message);
+        }
+    }
+}
