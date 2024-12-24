@@ -6,8 +6,7 @@ pub mod utils;
 pub mod schema;
 mod collection;
 pub mod storages;
- mod storage;
-
+pub mod storage;
 mod database;
 pub mod query;
 pub mod operation;
