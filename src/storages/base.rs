@@ -1,3 +1,5 @@
+#![allow(warnings)]
+
 use wasm_bindgen::JsValue;
 use crate::query::Query;
 
@@ -62,10 +64,9 @@ extern "C" {
     #[wasm_bindgen(method, catch)]
     pub async fn start(this: &StorageExternal) -> Result<JsValue, JsValue>;
 }
-
-
 //Represents a rust storage
 pub trait Storage {
+    #[allow(clippy::async_yields_async)]
     async fn write(&self, op: &Operation) -> Result<JsValue, JsValue>;
     async fn find(&self, collection_name: &str, query: Query) -> Result<JsValue, JsValue>;
     async fn find_document_by_id(&self, collection_name: &str, primary_key:JsValue) -> Result<JsValue, JsValue>;

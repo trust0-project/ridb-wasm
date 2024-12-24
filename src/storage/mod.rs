@@ -1,16 +1,12 @@
 use std::collections::HashMap;
 
-use base::StorageExternal;
 use js_sys::Reflect;
 use serde_wasm_bindgen::to_value;
 use wasm_bindgen::{JsCast, JsValue};
 
-use crate::{error::RIDBError, operation::{OpType, Operation}, plugin::BasePlugin, schema::{property_type::PropertyType, Schema}};
+use crate::{error::RIDBError, operation::{OpType, Operation}, plugin::BasePlugin, schema::{property_type::PropertyType, Schema}, storages::base::StorageExternal};
 
 pub mod internals;
-pub mod base;
-pub mod indexdb;
-pub mod inmemory;
 
 #[derive(Debug, PartialEq, Clone, Copy)]
 pub(crate) enum HookType {

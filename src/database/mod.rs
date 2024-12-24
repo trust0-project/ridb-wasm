@@ -11,9 +11,9 @@ use crate::plugin::BasePlugin;
 use crate::plugin::encryption::EncryptionPlugin;
 use crate::plugin::migration::MigrationPlugin;
 use crate::schema::Schema;
-use crate::storage::base::StorageExternal;
-use crate::storage::inmemory::InMemory;
 use crate::storage::Storage;
+use crate::storages::base::StorageExternal;
+use crate::storages::inmemory::InMemory;
 
 #[wasm_bindgen(typescript_custom_section)]
 const TS_APPEND_CONTENT: &'static str = r#"
@@ -292,7 +292,8 @@ impl Database {
 
 #[cfg(test)]
 mod tests {
-    use crate::storage::{indexdb::IndexDB, inmemory::InMemory};
+
+    use crate::storages::indexdb::IndexDB;
 
     use super::*;
     use wasm_bindgen_test::*;

@@ -1,13 +1,16 @@
 use wasm_bindgen::JsValue;
 use wasm_bindgen::prelude::wasm_bindgen;
-mod error;
-mod utils;
-mod schema;
+
+pub mod error;
+pub mod utils;
+pub mod schema;
 mod collection;
-mod storage;
+pub mod storages;
+ mod storage;
+
 mod database;
-mod query;
-mod operation;
+pub mod query;
+pub mod operation;
 mod plugin;
 
 #[wasm_bindgen(start)]

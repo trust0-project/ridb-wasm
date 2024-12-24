@@ -5,10 +5,10 @@ use wasm_bindgen::prelude::wasm_bindgen;
 use crate::operation::{OpType, Operation};
 use crate::query::Query;
 use crate::storage::internals::base_storage::BaseStorage;
+use crate::storage::internals::core::CoreStorage;
 use std::sync::RwLock;
 
 use super::base::Storage;
-use super::internals::core::CoreStorage;
 
 #[wasm_bindgen(typescript_custom_section)]
 const TS_APPEND_CONTENT: &'static str = r#"
