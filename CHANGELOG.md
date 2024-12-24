@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/trust0-project/ridb-wasm/compare/v1.0.7...v1.0.8) (2024-12-24)
+
+
+### Bug Fixes
+
+* improve is_debug enabled check ([c3b647c](https://github.com/trust0-project/ridb-wasm/commit/c3b647cd8f2aba117bd8def48c9d8bbe1adc2412))
+
 ## [1.0.7](https://github.com/trust0-project/ridb-wasm/compare/v1.0.6...v1.0.7) (2024-12-24)
 
 
