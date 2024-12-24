@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/trust0-project/ridb-wasm/compare/v1.0.6...v1.0.7) (2024-12-24)
+
+
+### Bug Fixes
+
+* disable logging based on env vars or local storage ([eeb70af](https://github.com/trust0-project/ridb-wasm/commit/eeb70afc9d6f3319576c8604ec0a6532a0670073))
+
 ## [1.0.6](https://github.com/trust0-project/ridb-wasm/compare/v1.0.5...v1.0.6) (2024-12-23)
 
 
