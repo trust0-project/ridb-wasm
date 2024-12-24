@@ -21,7 +21,7 @@ fn derive_key(password: &str, salt: &[u8]) -> Result<[u8; 32], JsValue> {
         return Err(JsValue::from("Password cannot be empty"));
     }
     let mut key = [0u8; 32];
-    pbkdf2_hmac::<Sha3_256>(password.as_bytes(), salt, 100_000, &mut key);
+    pbkdf2_hmac::<Sha3_256>(password.as_bytes(), salt, 5000, &mut key);
     Ok(key)
 }
 
