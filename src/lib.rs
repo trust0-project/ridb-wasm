@@ -28,30 +28,28 @@ pub fn is_debug_mode() -> bool {
     get_debug_mode()
 }
 
-#[cfg(not(target_arch = "wasm32"))]
 fn get_debug_mode() -> bool {
-    std::env::var("DEBUG")
+    if let Some(win) = web_sys::window() {
+        return win.local_storage()
+            .ok()
+            .flatten()
+            .and_then(|storage| storage.get_item("DEBUG").ok().flatten())
+            .map(|debug_str| {
+                debug_str
+                    .split(',')
+                    .any(|s| s == "ridb" || s.starts_with("ridb:*"))
+            })
+            .unwrap_or(false);
+    }
+
+    return std::env::var("DEBUG")
         .ok()
         .map(|debug_var| {
             debug_var
                 .split(',')
                 .any(|s| s == "ridb" || s.starts_with("ridb:*"))
         })
-        .unwrap_or(false)
-}
-
-#[cfg(target_arch = "wasm32")]
-fn get_debug_mode() -> bool {
-    use web_sys::window;
-    window()
-        .and_then(|win| win.local_storage().ok().flatten())
-        .and_then(|storage| storage.get_item("DEBUG").ok().flatten())
-        .map(|debug_str| {
-            debug_str
-                .split(',')
-                .any(|s| s == "ridb" || s.starts_with("ridb:*"))
-        })
-        .unwrap_or(false)
+        .unwrap_or(false);
 }
 
 
